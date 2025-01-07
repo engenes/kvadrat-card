@@ -2,13 +2,12 @@
 import { type FormFields } from '@/types'
 import { Preview } from 'vue-advanced-cropper'
 import QrcodeVue from 'qrcode.vue'
-import { nextTick, ref, watch } from 'vue'
 
-const emits = defineEmits<{
+defineEmits<{
   (e: 'ready', value: HTMLDialogElement): void
 }>()
 
-const props = defineProps<{
+defineProps<{
   formData: FormFields
 }>()
 </script>

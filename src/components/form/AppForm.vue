@@ -132,6 +132,8 @@ watch(
     }
   }
 )
+
+const toPrint = () => print()
 </script>
 
 <template>
@@ -221,6 +223,8 @@ watch(
     </div>
     <div>
       <AppImage @change="formData.photo = $event" />
+
+      <Button style="width: 100%" @click="toPrint">На печать</Button>
     </div>
   </form>
 </template>
