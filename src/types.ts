@@ -5,12 +5,14 @@ export interface FormFields {
   i?: string,
   post?: string,
   inGild: boolean,
-  phone: string,
+  phoneFront: string,
+  phoneBack: string,
   email?: string,
   photo?: CropperResult
   qr: {
     type?: QrTypes,
     value?: string
+    inputValue?: string
   }
 }
 

@@ -4,7 +4,7 @@ import { Cropper, CircleStencil, type CropperResult } from 'vue-advanced-cropper
 import AppNavigation from '@/components/form/AppNavigation.vue'
 
 const emits = defineEmits<{
-  (e: 'change', value: CropperResult): void;
+  (e: 'change', value: CropperResult): void
 }>()
 
 const fileInput = ref<HTMLInputElement>()
@@ -25,10 +25,7 @@ const zoom = ref(0)
 const onChange = (result: CropperResult) => {
   const { coordinates, imageSize } = cropperRef.value
 
-  if (
-    imageSize.width / imageSize.height >
-    coordinates.width / coordinates.height
-  ) {
+  if (imageSize.width / imageSize.height > coordinates.width / coordinates.height) {
     // Determine the position of slider bullet
     // It's 0 if the stencil has the maximum size and it's 1 if the has the minimum size
     zoom.value =
@@ -51,14 +48,14 @@ const onZoom = (value: number) => {
     // to calculate the sought relative zoom value
     cropperRef.value.zoom(
       (imageHeight - zoom.value * (imageHeight - minHeight)) /
-      (imageHeight - value * (imageHeight - minHeight))
+        (imageHeight - value * (imageHeight - minHeight))
     )
   } else {
     const minWidth = cropperRef.value.sizeRestrictions.minWidth
     const imageWidth = cropperRef.value.imageSize.width
     cropperRef.value.zoom(
       (imageWidth - zoom.value * (imageWidth - minWidth)) /
-      (imageWidth - value * (imageWidth - minWidth))
+        (imageWidth - value * (imageWidth - minWidth))
     )
   }
 }
@@ -76,7 +73,7 @@ const onZoom = (value: number) => {
         :stencil-props="{
           lines: {},
           previewClass: 'twitter-cropper__stencil',
-          aspectRatio: 1/1,
+          aspectRatio: 1 / 1
         }"
         :resize-image="false"
         :transitions="false"
@@ -91,7 +88,11 @@ const onZoom = (value: number) => {
       <AppNavigation :zoom="zoom" @change="onZoom" />
     </template>
 
-    <div class="uploadArea" :class="sourceImage ? 'replaceImage': 'addImage'" @click="fileInput?.click">
+    <div
+      class="uploadArea"
+      :class="sourceImage ? 'replaceImage' : 'addImage'"
+      @click="fileInput?.click"
+    >
       <template v-if="sourceImage">
         <i class="fa-solid fa-arrows-rotate icon" />
         Заменить фото
@@ -110,7 +111,6 @@ const onZoom = (value: number) => {
       />
     </div>
   </div>
-
 </template>
 
 <style scoped lang="scss">
@@ -147,21 +147,16 @@ const onZoom = (value: number) => {
   }
 }
 
+:deep(.twitter-cropper) {
+  height: 270px;
+  background: #ddd;
 
-:deep {
-  .twitter-cropper {
-    height: 270px;
-    background: #DDD;
+  .twitter-cropper__background {
+    background-color: transparent;
+  }
 
-    &__background {
-      background-color: transparent;
-    }
-
-    &__foreground {
-      background-color: #000;
-    }
-
+  .twitter-cropper__foreground {
+    background-color: #000;
   }
 }
-
 </style>

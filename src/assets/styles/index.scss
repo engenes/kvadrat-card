@@ -1,13 +1,10 @@
-@import '../fonts/proxima-nova/proxima-nova';
+@import '@/assets/fonts/myriad-pro/myriad-pro';
+@import '@/assets/fonts/proxima-nova/proxima-nova';
+@import '@/assets/fonts/bebas-neue/bebas-neue';
 
 body {
   font-family:
-    'Proxima Nova',
-    'Helvetica Neue',
-    Helvetica,
-    Arial,
-    -apple-system,
-    BlinkMacSystemFont,
+    'Myriad Pro',
     sans-serif;
   font-size: 14px;
 }
